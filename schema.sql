@@ -3,7 +3,7 @@ CREATE TABLE usuarios
     id SERIAL PRIMARY KEY,
     nome TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    senha VARCHAR(50) NOT NULL
+    senha TEXT NOT NULL
 );
 
 CREATE TABLE transacoes
