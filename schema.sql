@@ -9,7 +9,7 @@ CREATE TABLE usuarios
 CREATE TABLE transacoes
 (
     id SERIAL PRIMARY KEY,
-    valor INT NOT NULL,
+    valor FLOAT NOT NULL,
     descricao TEXT NOT NULL,
   	data_transacao DATE NOT NULL DEFAULT NOW(),
   	tipo VARCHAR(8),
