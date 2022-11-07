@@ -12,7 +12,7 @@ const registerTransaction = async (req, res) => {
 
         const transaction = await knex('transacoes')
             .insert({
-                "valor": (valor/100),
+                "valor": valor.toFixed(2),
                 descricao,
                 data_transacao,
                 tipo,
