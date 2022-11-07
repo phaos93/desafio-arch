@@ -1,6 +1,6 @@
 const express = require("express");
 const users = require("./controllers/users");
-const verifyLogin = require("./filters/verifyLogin");
+const verifyLogin = require("./authentication/verifyLogin");
 
 const router = express();
 
