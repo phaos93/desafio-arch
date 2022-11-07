@@ -9,4 +9,6 @@ router.post('/login', users.loginUser);
 
 router.use(verifyLogin);
 
+router.put('/users', users.updateUser);
+
 module.exports = router;

@@ -86,7 +86,38 @@ const loginUser = async (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    const { user } = req
+    const { nome, email, senha} = req.body;
+
+    try {
+        const usedEmail = await knex('usuarios').where('email', email);
+        if (usedEmail.length > 0 && usedEmail[0].email !== user[0].email) {
+            return res.status(400).json("Já existe usuário cadastrado com o email informado.");
+        }
+
+        const hash = (await pwd.hash(Buffer.from(senha))).toString("hex");
+        const loggedUser = await knex('usuarios')
+            .where('id', user[0].id)
+            .update({
+                'nome': nome,
+                'email': email,
+                'senha': hash
+            })
+
+        if (loggedUser.length === 0) {
+            return res.status(400).json("Erro na atualização do usuário");
+        }
+
+        return res.status(200).json("usuário atualizado com sucesso");
+    } catch (e) {
+        return res.status(500).json(e.message);
+    }
+};
+
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    updateUser
 }
