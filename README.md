@@ -41,7 +41,7 @@ Desafio técnico para vaga de Desenvolvedor NodeJs Jr
 }
 ```
 
-- Para fazer o login usando um usuário criado é necessário utilizar a rota '/login' com verbo HTTP POST e enviar um body.json como o do exemplo abaixo:
+- Para fazer o login e gerar um token de autenticação é necessário utilizar a rota '/login' com verbo HTTP POST e enviar um body.json como o do exemplo abaixo:
 
 ```bash
 {
