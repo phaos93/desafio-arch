@@ -1,11 +1,12 @@
 const knex = require("../database/connection");
+const { schemaRegisterTransactions } = require('../validations/schemaTransactions')
 
 const registerTransaction = async (req, res) => {
     const { user } = req;
     const { valor, descricao, data_transacao, tipo } = req.body;
 
     try {
-
+        await schemaRegisterTransactions.validate(req.body);
         if (tipo !== 'entrada' && tipo !== 'saida') {
             return res.status(400).json("o tipo da transação deve ser 'entrada' ou 'saida'");
         }
