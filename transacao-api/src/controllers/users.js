@@ -2,11 +2,13 @@ const knex = require("../database/connection");
 const securePassword = require("secure-password");
 const pwd = securePassword();
 const jwt = require("jsonwebtoken");
+const { schemaRegisterUsers, schemaLoginUsers, schemaUpdateUsers } = require('../validations/schemaUsers');
 
 const registerUser = async (req, res) => {
     const { nome, email, senha } = req.body;
 
     try {
+        await schemaRegisterUsers.validate(req.body);
         const usedEmail = await knex('usuarios').where('email', email);
         if (usedEmail.length > 0) {
             return res.status(400).json("Já existe usuário cadastrado com o email informado.");
@@ -34,6 +36,7 @@ const loginUser = async (req, res) => {
     const { email, senha } = req.body;
 
     try {
+        await schemaLoginUsers.validate(req.body);
         const userExists = await knex('usuarios').where('email', email);
 
         if (userExists.length === 0) {
@@ -91,6 +94,7 @@ const updateUser = async (req, res) => {
     const { nome, email, senha} = req.body;
 
     try {
+        await schemaUpdateUsers.validate(req.body);
         const usedEmail = await knex('usuarios').where('email', email);
         if (usedEmail.length > 0 && usedEmail[0].email !== user[0].email) {
             return res.status(400).json("Já existe usuário cadastrado com o email informado.");
