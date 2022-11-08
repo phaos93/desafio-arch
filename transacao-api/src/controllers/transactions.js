@@ -3,7 +3,7 @@ const { schemaRegisterTransactions } = require('../validations/schemaTransaction
 
 const registerTransaction = async (req, res) => {
     const { user } = req;
-    const { valor, descricao, data_transacao, tipo } = req.body;
+    const { valor, descricao, tipo } = req.body;
 
     try {
         await schemaRegisterTransactions.validate(req.body);
@@ -15,7 +15,6 @@ const registerTransaction = async (req, res) => {
             .insert({
                 "valor": valor.toFixed(2),
                 descricao,
-                data_transacao,
                 tipo,
                 "usuario_id": user[0].id
             });
