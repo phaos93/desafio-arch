@@ -1,10 +1,10 @@
-## Desafio Arch - Desenvolvedor Back-end Jr.
+# Desafio Arch - Desenvolvedor Back-end Jr.
 
 Desafio técnico para vaga de Desenvolvedor NodeJs Jr
 
 - O projeto foi feito utilizando JavaScript com banco de dados PostgresSQL.
 
-# Pacotes instalados para realização do desafio:
+## Pacotes instalados para realização do desafio:
 
 - Express;Cors;dotenv;jsonwebtoken;knex;pg;secure-password;nodemon(devDependencies).
 
@@ -76,4 +76,4 @@ Obs: O campo 'tipo' deve ser preenchido com as palavras 'entrada' ou 'saida' cas
 
 - A api 'saldo-api' só irá mostrar o saldo do usuário, calculando todas as transações de entrada e saída. Para verificar o saldo do usuário, é necessário estar logado, ou seja, é necessário preencher o Bearer Token com um token que será gerado após o login(utilizando a transacao-api). Após preencher o Bearer Token, é preciso usar a rota '/balance' com o verbo HTTP GET, dessa forma será calculado o saldo do usuário logado.
 
-## Obrigado!
+# Obrigado!
